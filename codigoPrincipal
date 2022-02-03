@@ -69,13 +69,9 @@ while pergunta_loop == "S":
         lista_encript = []
         lista_pure = []
         msg_dscpt = []
-        addNum = 1
-        print("Digite, um de cada vez, todos os números que compôem a mensagem encriptada: ")
-        print("PS: Digite \"0\" para encerrar a mensagem.")
-        while addNum != 0:  # Ciclo while responsável por adicionar os números criptografados a uma lista. Para encerrar o ciclo, basta digitar 0.
-            addNum = int(input())
-            if addNum != 0:
-                lista_encript.append(addNum)
+        with open('mensagem_encript.txt', 'r') as f3:
+                for valor in f3:
+                        lista_encript.append(int(valor))
         print("\nDigite um par de números primos \"p\" e \"q\":\n")
         p = int(input("Número p: "))
         if conferirPrimalidade(p) == 1:
