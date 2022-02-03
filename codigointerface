@@ -63,18 +63,6 @@ def opcao2():
 def opcao3():
     sg.theme('Dark')
     layout = [
-        [sg.Text('Digite, um de cada vez, os números que compõem a mensagem encriptada:')],
-        [sg.Input(size=(10, 15), key='msg')],
-        [sg.Button('Enviar')],
-        [sg.Text('')],
-        [sg.Button('Confirmar')]
-    ]
-    return sg.Window('Opção 3', layout=layout, finalize=True, element_justification='c')
-
-
-def opcao3_pt2():
-    sg.theme('Dark')
-    layout = [
         [sg.Text('Digite um par de números primos \"p\" e \"q\":\n')],
         [sg.Text('Número P:'), sg.Input(key='numP', size=(10, 10)), sg.Text('Número Q:'),
          sg.Input(key='numQ', size=(10, 10))],
@@ -95,12 +83,13 @@ def pergunta():
 
 
 # Criar janela inicial:
-inicio, escolher, opcaoum, opcaodois, perg, opcaotres, opcaotrespt2 = janela_inicio(), None, None, \
-    None, None, None, None
+inicio, escolher, opcaoum, opcaodois, perg, opcaotres = janela_inicio(), None, None, \
+    None, None, None
 
 # Criar loop de eventos:
 while True:
     window, event, values = sg.read_all_windows()
+
     # Quando a janela for fechada
     if window == inicio and event == sg.WIN_CLOSED:
         break
@@ -114,8 +103,7 @@ while True:
         break
     if window == opcaotres and event == sg.WIN_CLOSED:
         break
-    if window == opcaotrespt2 and event == sg.WIN_CLOSED:
-        break
+
     # Inicio
     if window == inicio and event == 'Clique para começar':
         escolher = janela_escolher()
@@ -137,9 +125,9 @@ while True:
         else:
             n = numP * numQ
             chavePub = [n, numE]
-            with open('chavePublica.txt', 'w') as arquivo:
+            with open('chavePublica.txt', 'w') as f1:
                 for valor in chavePub:
-                    arquivo.write(str(valor) + '\n')
+                    f1.write(str(valor) + '\n')
             sg.popup('Chave pública gerada com sucesso.')
             perg = pergunta()
             opcaoum.hide()
@@ -164,9 +152,9 @@ while True:
         for elemento in range(len(lista_cript)):
             calculo = pow(lista_cript[elemento], numE, numN)
             lista_final.append(calculo)
-        with open('mensagem_encript.txt', 'w') as arquivo:
+        with open('mensagem_encript.txt', 'w') as f2:
             for valor in lista_final:
-                arquivo.write(str(valor) + ' ')
+                f2.write(str(valor) + '\n')
         sg.popup('Mensagem encriptada com sucesso.')
         perg = pergunta()
         opcaodois.hide()
@@ -176,13 +164,9 @@ while True:
         opcaotres = opcao3()
         escolher.hide()
     if window == opcaotres:
-        if event == 'Enviar':
-            addNum = int(values['msg'])
-            lista_encript.append(addNum)
-        if event == 'Confirmar':
-            opcaotrespt2 = opcao3_pt2()
-            opcaotres.hide()
-    if window == opcaotrespt2:
+        with open('mensagem_encript.txt', 'r') as f3:
+            for valor in f3:
+                lista_encript.append(int(valor))
         numP = int(values['numP'])
         numQ = int(values['numQ'])
         numE = int(values['numE'])
@@ -200,12 +184,13 @@ while True:
             for elemento in lista_pure:
                 res = get_key(elemento, alfabeto)
                 msg_dscpt.append(res)
-            with open('mensagem_desencript.txt', 'w') as arquivo:
+            with open('mensagem_desencript.txt', 'w') as f4:
                 for valor in msg_dscpt:
-                    arquivo.write(str(valor))
+                    f4.write(str(valor))
             sg.popup('Mensagem desencriptada com sucesso.')
             perg = pergunta()
-            opcaotrespt2.hide()
+            opcaotres.hide()
+    
     # Quando queremos voltar pra janela anterior
     if window == perg and event == 'Sim':
         perg.hide()
