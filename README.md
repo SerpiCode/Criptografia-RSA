@@ -8,12 +8,12 @@ escrito em Python, utilizando a biblioteca PySimpleGUI para criar a interface.
 
 # Menu Inicial:
 
-![image](https://user-images.githubusercontent.com/94150246/166130920-3800e005-e86d-49cc-914e-3a1bd984b911.png)
+![menu_inicial](https://user-images.githubusercontent.com/94150246/166175127-1770914b-26b1-4c79-acb3-453fd6bd5807.png)
 
 # Gerando chave pública e encriptando:
 
-![image](https://user-images.githubusercontent.com/94150246/166130952-fc9b54ff-c5ce-4a33-99b3-cf3388e2b412.png)
+![gerando_chave_e_desencript](https://user-images.githubusercontent.com/94150246/166175140-82e99755-5b0e-45a4-82b7-e5aae96c1874.png)
 
 # Desencriptando e exibindo a mensagem salva:
 
-![image](https://user-images.githubusercontent.com/94150246/166130955-f4277554-ce42-475c-9a4e-6dbbd24d5913.png)
+![desencript](https://user-images.githubusercontent.com/94150246/166175154-0d5379d6-7197-444b-b5ea-5f79a2112040.png)
