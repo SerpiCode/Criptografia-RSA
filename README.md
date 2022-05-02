@@ -16,4 +16,4 @@ escrito em Python, utilizando a biblioteca PySimpleGUI para criar a interface.
 
 # Desencriptando e exibindo a mensagem salva:
 
-![desencript](https://user-images.githubusercontent.com/94150246/166175154-0d5379d6-7197-444b-b5ea-5f79a2112040.png)
+![desencript1](https://user-images.githubusercontent.com/94150246/166175555-9b497316-50fd-4aa6-a54c-77f4f32d8ccb.png)
